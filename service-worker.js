@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/MoodLifterApp/precache-manifest.55fe4c7d007e756b79af4e93a76c3d12.js"
+  "/MoodLifterApp/precache-manifest.853b9825d2d715b04697d9dff848ee9b.js"
 );
 
 self.addEventListener('message', (event) => {
