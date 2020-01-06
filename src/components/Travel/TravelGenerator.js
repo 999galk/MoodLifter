@@ -1,0 +1,204 @@
+import React from 'react';
+import Carousel from 'react-simply-carousel';
+import { destinations } from './destinations';
+
+
+class TravelGenerator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeSlideIndex : 0,
+      userCountryCode : '',
+      randomId : '',
+      destinationCode : '',
+      destinationName : '',
+      linkInfo : '',
+      imageLink : '',
+      departure_date: '',
+      return_date : '',
+      linkFlight : '',
+      suggestedDest : []
+    }
+  }
+
+setActiveSlideIndex = (newActiveSlideIndex) => {
+	    this.setState({
+	      activeSlideIndex: newActiveSlideIndex
+	    });
+}
+
+fetchUserCountry = () => {
+		fetch('https://ipapi.co/json/')
+					.then(res => res.json())
+					.then(data => {
+						if(data.country_code_iso3 === 'ISR'){
+							this.setState({userCountryCode : 'TLV'});
+						} else {
+							this.setState({userCountryCode : data.country_code_iso3 });
+						}});
+}
+
+updateDestParams = () => {
+	const min = destinations[0].id;
+	const max = destinations[destinations.length-1].id;
+	this.setState({ randomId : parseInt(Math.random() * (max - min) + min)}, () => this.setDestParams());
+}
+
+setDestParams = () => {
+	const id = this.state.randomId;
+	console.log('id to set params: ', id);
+	this.setState ({destinationCode : destinations[id].countryCode, 
+					destinationName : destinations[id].name,
+					linkInfo : destinations[id].linkInfo,
+					imageLink : destinations[id].imageLink
+				}, () => this.keepInArray(id))
+}
+
+keepInArray = (id) => {
+	let wasSuggested = false;
+	(this.state.suggestedDest).forEach(dest =>{
+		if(dest.destId === id){
+			wasSuggested = true;
+		}
+	})
+	if(!wasSuggested){
+		const newDest = {
+			destinationName : this.state.destinationName,
+			imageLink : this.state.imageLink,
+			destId : id
+		}
+		const joined = this.state.suggestedDest.concat(newDest);
+		this.setState({suggestedDest : joined});
+		console.log('sug array:', joined);
+	}	
+}
+
+unhideSuggestions = () => {
+  		const div = document.getElementById('suggestions');
+  		if(div && this.state.suggestedDest.length > 0){
+  			if(div.className==='hide'){
+  				div.className='unhide';
+  			}
+  		}
+}
+
+changeBack = (event) => {
+  		const i = event.target.id;
+  		const id = this.state.suggestedDest[i].destId;
+  		this.setState ({destinationCode : destinations[id].countryCode, 
+					destinationName : destinations[id].name,
+					linkInfo : destinations[id].linkInfo,
+					imageLink : destinations[id].imageLink
+				})
+}
+
+appendLeadingZeroes = (n) => {
+  if(n <= 9){
+    return "0" + n;
+  }
+  return n
+}
+
+setFlightDates = () => {
+	const current_datetime = new Date();
+	const formatted_dep_date = current_datetime.getFullYear() + "-" + this.appendLeadingZeroes(current_datetime.getMonth() + 1) + "-" + this.appendLeadingZeroes(current_datetime.getDate());
+	const returnDate = new Date(Date.now() + 12096e5);
+	const formatted_return_date = returnDate.getFullYear() + "-" + this.appendLeadingZeroes(returnDate.getMonth() + 1) + "-" + this.appendLeadingZeroes(returnDate.getDate());
+	this.setState({departure_date : formatted_dep_date, return_date : formatted_return_date});
+}
+
+componentDidMount(){
+	this.fetchUserCountry();
+	this.updateDestParams();
+	this.setFlightDates();	
+	window.onpopstate = this.props.onBackButtonEvent;			
+}
+
+
+render() {
+	const {userCountryCode, destinationCode, departure_date, return_date,imageLink,destinationName,linkInfo, suggestedDest} = this.state;
+	const linkFlight = `https://www.kayak.com/flights/${userCountryCode}-${destinationCode}/${departure_date}/${return_date}?sort=bestflight_a`;
+	return (
+		<div>
+		<div className='card-bg fade-in br3 pa3 ma2 mb5 dib bw2 shadow-5'>
+			<div>
+				<h1>Your next destination is:</h1>
+			</div>
+			<div className='flex'>
+	      		<img alt='dest' src={imageLink} width='450px' height='350px' className='ma3'/>
+	      		<div className='pa5'>
+			        <h2 className='pa2'>{destinationName}</h2>
+			        <div className='pt2'>
+			        	<a className='f4' href={linkInfo} target="_blank"> Get More info about {destinationName} </a> 
+			        </div>
+			        <div className='pt3'>
+			        	<a className='f4' href={linkFlight} target="_blank"> Book a flight now! </a> 
+			        </div>
+			        <p className='mt5'>Not for you?</p>
+			        <button className='mt2 white b pv2 ph3 bg-navy bn br-pill' onClick={() => {this.unhideSuggestions(); this.updateDestParams();}}> Generate Another </button> 
+			    </div>
+			</div>
+	    </div>
+	    <div id='suggestions' className='hide'>
+		    <hr/>
+		    <h2 className='mt2'> Go Back to Suggestions:</h2>
+		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth: '67%'}}>
+		    	<Carousel
+		      	id='carousle'
+		      	containerProps={{
+		          style: {
+		            justifyContent: "space-between",
+		            marginBottom : '8px'
+		          }
+		        }}
+		        activeSlideIndex={this.state.activeSlideIndex}
+		        onRequestChange={this.setActiveSlideIndex}
+		        forwardBtnProps={{
+		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
+		          style: {
+		            width: 70,
+		            height: 70,
+		            minWidth: 70,
+		            alignSelf: "center",
+		            backgroundColor: 'Transparent',
+				    backgroundRepeat :'no-repeat',
+				    border : 'none',
+				    cursor : 'pointer',
+				    overflow : 'hidden',
+				    outline: 'none'
+		          }
+		        }}
+		        backwardBtnProps={{
+		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
+		          style: {
+		            width: 70,
+		            height: 70,
+		            minWidth: 70,
+		            alignSelf: "center",
+		            backgroundColor: 'Transparent',
+				    backgroundRepeat :'no-repeat',
+				    border : 'none',
+				    cursor : 'pointer',
+				    overflow : 'hidden',
+				    outline: 'none'
+		          }
+		        }}
+		        itemsToShow={3}
+		        speed={400}
+		      >
+			    {Array.from(suggestedDest).map((item, index) => (
+		    		<div key={index} id='activeItem' style={{width:350}} className='bw2 shadow-5'>
+		    			<h3> {suggestedDest[index].destinationName} </h3>
+		            	<img alt='dest' id={index} src={suggestedDest[index].imageLink} style={{width:300, height:300}}
+		            		onClick={this.changeBack}/>
+		          	</div>  
+			    ))}
+		      </Carousel>
+		      </div>
+		    </div>
+		    </div>
+	);
+}
+}
+
+export default TravelGenerator;

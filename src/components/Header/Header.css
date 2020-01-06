@@ -1,0 +1,12 @@
+.background-image-container {
+    background-image:url('./Promo-Twitter-Header.jpeg');
+    position: relative;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 10% 0;
+}
+.placeholder {
+	height:150px;
+}
