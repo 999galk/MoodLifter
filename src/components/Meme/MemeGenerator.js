@@ -45,7 +45,7 @@ class MemeGenerator extends React.Component {
 								    outline: 'none'
 						        }} 
 						>
-		      			<img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg" onClick={this.fetchMeme} style={{width:140, height:140}}/>
+		      			<img alt='arrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg" onClick={this.fetchMeme} style={{width:140, height:140}}/>
 		      			</button>
 		      		</div>
 	      		</div>

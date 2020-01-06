@@ -9,8 +9,6 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import Header from '../components/Header/Header';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 import './App.css';
@@ -42,10 +40,10 @@ class App extends Component{
 			<Router>
 				<div className='tc'>
 					<Header />
-					<h1 className='f1'> Welcome! </h1>
+					<h1 className='f1'> MoodLifter </h1>
 					{ route === '/home'
 					?<div> 
-					<p className='f3'> This app offers activities to lift up your mood</p> 
+					<p className='f3'> Here for your toughest days </p> 
 						<ErrorBoundary>
 							<Link to='meme'><MemeCard onRouteChange={this.onRouteChange} /></Link>
 							<Link to='cocktail'><CocktailCard onRouteChange={this.onRouteChange} /></Link>

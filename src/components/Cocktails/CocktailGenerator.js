@@ -72,7 +72,7 @@ class CocktailGenerator extends React.Component{
 	}
 
 	render(){
-		const {cocktailImg, cocktailName, cocktailIngredients, allCocktails, fetchCocktail} = this.state;
+		const {cocktailImg, cocktailName, cocktailIngredients, allCocktails} = this.state;
 		return (
 			<div>
 			<div className='card-bg fade-in br3 pa3 ma2 mb5 dib bw2 shadow-5'>
@@ -85,7 +85,7 @@ class CocktailGenerator extends React.Component{
 				        <h2 className='pa2 mt0'>{cocktailName}</h2>
 				        <p className='w5 lh-copy measure'>{cocktailIngredients}</p>
 				        <div className='mt4'>
-				        <a className='f3' href="https://www.google.co.il/maps/search/bar" target="_blank"> Go get It! </a>
+				        <a className='f3' href="https://www.google.co.il/maps/search/bar" target="_blank" rel="noopener noreferrer"> Go get It! </a>
 				        </div>
 				        <p className='mt5'>Not for you?</p>
 				        <button className='mt1 white b pv2 ph3 bg-navy bn br-pill' onClick={() => {this.unhideSuggestions(); this.fetchCocktail();}}> Generate Another </button> 
@@ -107,7 +107,7 @@ class CocktailGenerator extends React.Component{
 		        activeSlideIndex={this.state.activeSlideIndex}
 		        onRequestChange={this.setActiveSlideIndex}
 		        forwardBtnProps={{
-		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
+		          children: <img alt='rightArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
 		          style: {
 		            width: 70,
 		            height: 70,
@@ -122,7 +122,7 @@ class CocktailGenerator extends React.Component{
 		          }
 		        }}
 		        backwardBtnProps={{
-		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
+		          children: <img alt='leftArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
 		          style: {
 		            width: 70,
 		            height: 70,

@@ -129,10 +129,10 @@ render() {
 	      		<div className='pa5'>
 			        <h2 className='pa2'>{destinationName}</h2>
 			        <div className='pt2'>
-			        	<a className='f4' href={linkInfo} target="_blank"> Get More info about {destinationName} </a> 
+			        	<a className='f4' href={linkInfo} target="_blank" rel="noopener noreferrer"> Get More info about {destinationName} </a> 
 			        </div>
 			        <div className='pt3'>
-			        	<a className='f4' href={linkFlight} target="_blank"> Book a flight now! </a> 
+			        	<a className='f4' href={linkFlight} target="_blank" rel="noopener noreferrer"> Book a flight now! </a> 
 			        </div>
 			        <p className='mt5'>Not for you?</p>
 			        <button className='mt2 white b pv2 ph3 bg-navy bn br-pill' onClick={() => {this.unhideSuggestions(); this.updateDestParams();}}> Generate Another </button> 
@@ -154,7 +154,7 @@ render() {
 		        activeSlideIndex={this.state.activeSlideIndex}
 		        onRequestChange={this.setActiveSlideIndex}
 		        forwardBtnProps={{
-		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
+		          children: <img alt='rightArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
 		          style: {
 		            width: 70,
 		            height: 70,
@@ -169,7 +169,7 @@ render() {
 		          }
 		        }}
 		        backwardBtnProps={{
-		          children: <img className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
+		          children: <img alt='leftArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
 		          style: {
 		            width: 70,
 		            height: 70,
