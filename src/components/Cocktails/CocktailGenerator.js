@@ -164,7 +164,7 @@ class CocktailGenerator extends React.Component{
 			    {Array.from(cocktailSuggestions).map((item, index) => (
 		    		<div key={index} id='activeItem' style={{width:350}} className='bw2 shadow-5'>
 		    			<h3>{cocktailSuggestions[index].cocktailName}</h3>
-		            	<img alt='cocktail' id={index} src={cocktailSuggestions[index].cocktailImg} style={{width:300, height:300}}
+		            	<img alt='cocktail' className='pointer' id={index} src={cocktailSuggestions[index].cocktailImg} style={{width:300, height:300}}
 		            		onClick={this.changeBack}/>
 		          	</div>  
 			    ))}

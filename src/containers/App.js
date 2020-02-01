@@ -40,10 +40,10 @@ class App extends Component{
 			<Router>
 				<div className='tc'>
 					<Header />
-					<h1 className='f1'> MoodLifter </h1>
+					<h1 className='f1'> Welcome! </h1>
 					{ route === '/home'
 					?<div> 
-					<p className='f3'> Here for your toughest days </p> 
+					<p className='f3'>Had a raugh day? Looking for a crazy adventure that will help you forget it?</p><p className='f3'>This is the place for you! </p> 
 						<ErrorBoundary>
 							<Link to='cocktail'><CocktailCard onRouteChange={this.onRouteChange} /></Link>
 							<Link to='travel'><TravelCard onRouteChange={this.onRouteChange}/></Link>
