@@ -46,7 +46,6 @@ updateDestParams = () => {
 
 setDestParams = () => {
 	const id = this.state.randomId;
-	console.log('id to set params: ', id);
 	this.setState ({destinationCode : destinations[id].countryCode, 
 					destinationName : destinations[id].name,
 					linkInfo : destinations[id].linkInfo,
@@ -69,7 +68,6 @@ keepInArray = (id) => {
 		}
 		const joined = this.state.suggestedDest.concat(newDest);
 		this.setState({suggestedDest : joined});
-		console.log('sug array:', joined);
 	}	
 }
 
@@ -84,12 +82,17 @@ unhideSuggestions = () => {
 
 changeBack = (event) => {
   		const i = event.target.id;
-  		const id = this.state.suggestedDest[i].destId;
-  		this.setState ({destinationCode : destinations[id].countryCode, 
-					destinationName : destinations[id].name,
-					linkInfo : destinations[id].linkInfo,
-					imageLink : destinations[id].imageLink
+  		//const id = destinations[i].destId;
+  		this.setState ({destinationCode : destinations[i].countryCode, 
+					destinationName : destinations[i].name,
+					linkInfo : destinations[i].linkInfo,
+					imageLink : destinations[i].imageLink
 				})
+}
+
+handleOnClick = (event) => {
+    const sugDiv = document.getElementById('suggestions');
+    sugDiv.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 }
 
 appendLeadingZeroes = (n) => {
@@ -116,13 +119,13 @@ componentDidMount(){
 
 
 render() {
-	const {userCountryCode, destinationCode, departure_date, return_date,imageLink,destinationName,linkInfo, suggestedDest} = this.state;
+	const {userCountryCode, destinationCode, departure_date, return_date,imageLink,destinationName,linkInfo} = this.state;
 	const linkFlight = `https://www.kayak.com/flights/${userCountryCode}-${destinationCode}/${departure_date}/${return_date}?sort=bestflight_a`;
 	return (
 		<div>
 		<div className='card-bg fade-in br3 pa3 ma2 mb5 dib bw2 shadow-5'>
 			<div>
-				<h1>Your next destination is:</h1>
+				<h1>Your chosen destination is:</h1>
 			</div>
 			<div className='flex'>
 	      		<img alt='dest' src={imageLink} width='450px' height='350px' className='ma3'/>
@@ -135,13 +138,13 @@ render() {
 			        	<a className='f4' href={linkFlight} target="_blank" rel="noopener noreferrer"> Book a flight now! </a> 
 			        </div>
 			        <p className='mt5'>Not for you?</p>
-			        <button className='mt2 white b pv2 ph3 bg-navy bn br-pill' onClick={() => {this.unhideSuggestions(); this.updateDestParams();}}> Generate Another </button> 
+			        <img alt='downAroow' className='pointer' src='https://cdn4.iconfinder.com/data/icons/colorful-basic-arrows/515/arrow_down_circle_darkblue-512.png' width='50px' height='50px' onClick={this.handleOnClick}/> 
 			    </div>
 			</div>
 	    </div>
-	    <div id='suggestions' className='hide'>
+	    <div id='suggestions'>
 		    <hr/>
-		    <h2 className='mt2'> Go Back to Suggestions:</h2>
+		    <h2 className='mt2'> More Suggestions:</h2>
 		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth: '67%'}}>
 		    	<Carousel
 		      	id='carousle'
@@ -186,10 +189,10 @@ render() {
 		        itemsToShow={3}
 		        speed={400}
 		      >
-			    {Array.from(suggestedDest).map((item, index) => (
+			    {Array.from(destinations).map((item, index) => (
 		    		<div key={index} id='activeItem' style={{width:350}} className='bw2 shadow-5'>
-		    			<h3> {suggestedDest[index].destinationName} </h3>
-		            	<img alt='dest' id={index} src={suggestedDest[index].imageLink} style={{width:300, height:300}}
+		    			<h3> {destinations[index].name} </h3>
+		            	<img className='pointer' alt='dest' id={index} src={destinations[index].imageLink} style={{width:300, height:300}}
 		            		onClick={this.changeBack}/>
 		          	</div>  
 			    ))}

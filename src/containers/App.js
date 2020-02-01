@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import CocktailCard from '../components/Cocktails/CocktailCard';
 import CocktailGenerator from '../components/Cocktails/CocktailGenerator';
-import MemeCard from '../components/Meme/MemeCard';
-import MemeGenerator from '../components/Meme/MemeGenerator';
+//import MemeCard from '../components/Meme/MemeCard';
+//import MemeGenerator from '../components/Meme/MemeGenerator';
 import TravelCard from '../components/Travel/TravelCard';
 import TravelGenerator from '../components/Travel/TravelGenerator';
 import ErrorBoundary from '../components/ErrorBoundary';
@@ -45,18 +45,14 @@ class App extends Component{
 					?<div> 
 					<p className='f3'> Here for your toughest days </p> 
 						<ErrorBoundary>
-							<Link to='meme'><MemeCard onRouteChange={this.onRouteChange} /></Link>
 							<Link to='cocktail'><CocktailCard onRouteChange={this.onRouteChange} /></Link>
 							<Link to='travel'><TravelCard onRouteChange={this.onRouteChange}/></Link>
 						</ErrorBoundary>
 						</div>
-			        : ( route === '/meme'
-			        	? <MemeGenerator onBackButtonEvent={this.onBackButtonEvent}/>
-			        	: ( route === '/cocktail'
+			        : ( route === '/cocktail'
 			        		? <CocktailGenerator onBackButtonEvent={this.onBackButtonEvent}/>
 			        		: <TravelGenerator onBackButtonEvent={this.onBackButtonEvent}/>
-			        		)
-			        	)
+		        		)
 					}
 				</div>
 			</Router>
