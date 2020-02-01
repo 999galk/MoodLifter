@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1ad3309ff733d2a2c4ea099172a19b48",
+    "revision": "12d9b804da708eba085cc87f3aa4c1d5",
     "url": "/MoodLifterApp/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MoodLifterApp/static/css/2.70550239.chunk.css"
   },
   {
-    "revision": "ad897e36c8dfb228d74b",
+    "revision": "64d929748dd9721e8972",
     "url": "/MoodLifterApp/static/css/main.9c5599de.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js.LICENSE"
   },
   {
-    "revision": "ad897e36c8dfb228d74b",
-    "url": "/MoodLifterApp/static/js/main.04336c1e.chunk.js"
+    "revision": "64d929748dd9721e8972",
+    "url": "/MoodLifterApp/static/js/main.5178aadc.chunk.js"
   },
   {
     "revision": "aefb5faf17129e6fcd51",

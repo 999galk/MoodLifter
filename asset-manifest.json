@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/MoodLifterApp/static/css/main.9c5599de.chunk.css",
-    "main.js": "/MoodLifterApp/static/js/main.04336c1e.chunk.js",
-    "main.js.map": "/MoodLifterApp/static/js/main.04336c1e.chunk.js.map",
+    "main.js": "/MoodLifterApp/static/js/main.5178aadc.chunk.js",
+    "main.js.map": "/MoodLifterApp/static/js/main.5178aadc.chunk.js.map",
     "runtime-main.js": "/MoodLifterApp/static/js/runtime-main.9f6a218a.js",
     "runtime-main.js.map": "/MoodLifterApp/static/js/runtime-main.9f6a218a.js.map",
     "static/css/2.70550239.chunk.css": "/MoodLifterApp/static/css/2.70550239.chunk.css",
     "static/js/2.8c31ceca.chunk.js": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js",
     "static/js/2.8c31ceca.chunk.js.map": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js.map",
     "index.html": "/MoodLifterApp/index.html",
-    "precache-manifest.7e5d0d60e14db332c38d91f0723aa397.js": "/MoodLifterApp/precache-manifest.7e5d0d60e14db332c38d91f0723aa397.js",
+    "precache-manifest.8d32077a7b4d0d9ccb3873ac40ae2959.js": "/MoodLifterApp/precache-manifest.8d32077a7b4d0d9ccb3873ac40ae2959.js",
     "service-worker.js": "/MoodLifterApp/service-worker.js",
     "static/css/2.70550239.chunk.css.map": "/MoodLifterApp/static/css/2.70550239.chunk.css.map",
     "static/css/main.9c5599de.chunk.css.map": "/MoodLifterApp/static/css/main.9c5599de.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.70550239.chunk.css",
     "static/js/2.8c31ceca.chunk.js",
     "static/css/main.9c5599de.chunk.css",
-    "static/js/main.04336c1e.chunk.js"
+    "static/js/main.5178aadc.chunk.js"
   ]
 }
