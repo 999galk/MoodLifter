@@ -96,14 +96,16 @@ class CocktailGenerator extends React.Component{
 	render(){
 		const {cocktailImg, cocktailName, cocktailIngredients, cocktailSuggestions} = this.state;
 		return (
-			<div>
-			<div className='card-bg fade-in br3 pa3 ma2 mb5 dib bw2 shadow-5'>
+			<div style={{display:'flex', flexDirection:'column'}}>
+			<div className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'70%'}}>
 				<div>
 					<h1>Your chosen drink for tonight is:</h1>
 				</div>
-				<div className='flex'>
-			      	<img alt='cocktail' src={cocktailImg} width='400px' height='400px' className='ma3'/>
-			      	<div className='pa4 mw5 mw7-ns center ph5-ns'>
+				<div style={{display:'flex',justifyContent:'center',flexWrap:'wrap'}}>
+					<div style={{maxWidth:'20rem'}}>
+			      	<img alt='cocktail' src={cocktailImg} style={{width:'100%'}}/>
+			      	</div>
+			      	<div className='mw5 mw7-ns ph5-ns'>
 				        <h2 className='pa2 mt0'>{cocktailName}</h2>
 				        <p className='w5 lh-copy measure'>{cocktailIngredients}</p>
 				        <div className='mt4'>
@@ -117,7 +119,7 @@ class CocktailGenerator extends React.Component{
 		    <div id='suggestions'>
 		    <hr/>
 		    <h2 className='mt2'> More Suggestions:</h2>
-		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5'>
+		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'98%'}}>
 		    	<Carousel
 		      	id='carousle'
 		      	containerProps={{
@@ -162,7 +164,7 @@ class CocktailGenerator extends React.Component{
 		        speed={400}
 		      >
 			    {Array.from(cocktailSuggestions).map((item, index) => (
-		    		<div key={index} id='activeItem' style={{width:350}} className='bw2 shadow-5'>
+		    		<div key={index} id='activeItem' style={{width:'350px'}} className='bw2 shadow-5'>
 		    			<h3>{cocktailSuggestions[index].cocktailName}</h3>
 		            	<img alt='cocktail' className='pointer' id={index} src={cocktailSuggestions[index].cocktailImg} style={{width:300, height:300}}
 		            		onClick={this.changeBack}/>

@@ -122,14 +122,16 @@ render() {
 	const {userCountryCode, destinationCode, departure_date, return_date,imageLink,destinationName,linkInfo} = this.state;
 	const linkFlight = `https://www.kayak.com/flights/${userCountryCode}-${destinationCode}/${departure_date}/${return_date}?sort=bestflight_a`;
 	return (
-		<div>
-		<div className='card-bg fade-in br3 pa3 ma2 mb5 dib bw2 shadow-5'>
+		<div style={{display:'flex', flexDirection:'column'}}>
+		<div className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'70%'}}>
 			<div>
 				<h1>Your chosen destination is:</h1>
 			</div>
-			<div className='flex'>
-	      		<img alt='dest' src={imageLink} width='450px' height='350px' className='ma3'/>
-	      		<div className='pa5'>
+			<div style={{display:'flex',justifyContent:'center',flexWrap:'wrap'}}>
+				<div style={{maxWidth:'30rem', maxHeight:'30rem'}}>
+	      		<img alt='dest' src={imageLink} style={{width:'100%'}}/>
+	      		</div>
+	      		<div className='mw5 mw7-ns ph5-ns'>
 			        <h2 className='pa2'>{destinationName}</h2>
 			        <div className='pt2'>
 			        	<a className='f4' href={linkInfo} target="_blank" rel="noopener noreferrer"> Get More info about {destinationName} </a> 
@@ -145,7 +147,7 @@ render() {
 	    <div id='suggestions'>
 		    <hr/>
 		    <h2 className='mt2'> More Suggestions:</h2>
-		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth: '67%'}}>
+		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'98%'}}>
 		    	<Carousel
 		      	id='carousle'
 		      	containerProps={{

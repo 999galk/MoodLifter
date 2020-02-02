@@ -45,8 +45,10 @@ class App extends Component{
 					?<div> 
 					<p className='f3'>Had a raugh day? Looking for a crazy adventure that will help you forget it?</p><p className='f3'>This is the place for you! </p> 
 						<ErrorBoundary>
+							<div style={{display:'flex',justifyContent:'center', flexWrap: 'wrap'}}>
 							<Link to='cocktail'><CocktailCard onRouteChange={this.onRouteChange} /></Link>
 							<Link to='travel'><TravelCard onRouteChange={this.onRouteChange}/></Link>
+							</div>
 						</ErrorBoundary>
 						</div>
 			        : ( route === '/cocktail'

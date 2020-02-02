@@ -1,3 +1,6 @@
+body{
+	width:100%;
+}
 @font-face {
 font-family: 'Poetsen One Regular';
 font-style: normal;
@@ -15,6 +18,7 @@ p,a {
 	font-family: 'Poetsen One Regular';
 	font-weight: 200;
 	color:#235278;
+	display:block;
 }
 button:hover {
 	background-color:blue;
