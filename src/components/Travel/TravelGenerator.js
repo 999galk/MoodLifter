@@ -1,5 +1,6 @@
 import React from 'react';
-import Carousel from 'react-simply-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 import { destinations } from './destinations';
 
 
@@ -17,7 +18,8 @@ class TravelGenerator extends React.Component {
       departure_date: '',
       return_date : '',
       linkFlight : '',
-      suggestedDest : []
+      suggestedDest : [],
+      suggestionsShow : 'hide'
     }
   }
 
@@ -87,12 +89,20 @@ changeBack = (event) => {
 					destinationName : destinations[i].name,
 					linkInfo : destinations[i].linkInfo,
 					imageLink : destinations[i].imageLink
-				})
+				}, this.handleOnClick(event))
 }
 
 handleOnClick = (event) => {
-    const sugDiv = document.getElementById('suggestions');
-    sugDiv.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  		let sugDiv;
+  		if(event.target.id === 'downArrow'){
+  			sugDiv = document.getElementById('suggestions');
+  			if(sugDiv.className === 'hide'){
+  				sugDiv.className = 'unhide';
+  			}
+  		} else{
+  			sugDiv = document.getElementById('chosen');
+  		}
+		sugDiv.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 }
 
 appendLeadingZeroes = (n) => {
@@ -123,7 +133,7 @@ render() {
 	const linkFlight = `https://www.kayak.com/flights/${userCountryCode}-${destinationCode}/${departure_date}/${return_date}?sort=bestflight_a`;
 	return (
 		<div style={{display:'flex', flexDirection:'column'}}>
-		<div className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'70%'}}>
+		<div id='chosen' className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5'>
 			<div>
 				<h1>Your chosen destination is:</h1>
 			</div>
@@ -140,62 +150,20 @@ render() {
 			        	<a className='f4' href={linkFlight} target="_blank" rel="noopener noreferrer"> Book a flight now! </a> 
 			        </div>
 			        <p className='mt5'>Not for you?</p>
-			        <img alt='downAroow' className='pointer' src='https://cdn4.iconfinder.com/data/icons/colorful-basic-arrows/515/arrow_down_circle_darkblue-512.png' width='50px' height='50px' onClick={this.handleOnClick}/> 
+			        <img alt='downArrow' id='downArrow' className='pointer' src='https://cdn4.iconfinder.com/data/icons/colorful-basic-arrows/515/arrow_down_circle_darkblue-512.png' width='50px' height='50px' onClick={this.handleOnClick}/> 
 			    </div>
 			</div>
 	    </div>
-	    <div id='suggestions'>
+	    <div id='suggestions' className='hide'>
 		    <hr/>
 		    <h2 className='mt2'> More Suggestions:</h2>
-		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'98%'}}>
+		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'85%'}}>
 		    	<Carousel
-		      	id='carousle'
-		      	containerProps={{
-		          style: {
-		            justifyContent: "space-between",
-		            marginBottom : '8px'
-		          }
-		        }}
-		        activeSlideIndex={this.state.activeSlideIndex}
-		        onRequestChange={this.setActiveSlideIndex}
-		        forwardBtnProps={{
-		          children: <img alt='rightArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
-		          style: {
-		            width: 70,
-		            height: 70,
-		            minWidth: 70,
-		            alignSelf: "center",
-		            backgroundColor: 'Transparent',
-				    backgroundRepeat :'no-repeat',
-				    border : 'none',
-				    cursor : 'pointer',
-				    overflow : 'hidden',
-				    outline: 'none'
-		          }
-		        }}
-		        backwardBtnProps={{
-		          children: <img alt='leftArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
-		          style: {
-		            width: 70,
-		            height: 70,
-		            minWidth: 70,
-		            alignSelf: "center",
-		            backgroundColor: 'Transparent',
-				    backgroundRepeat :'no-repeat',
-				    border : 'none',
-				    cursor : 'pointer',
-				    overflow : 'hidden',
-				    outline: 'none'
-		          }
-		        }}
-		        itemsToShow={3}
-		        speed={400}
-		      >
+		    	>
 			    {Array.from(destinations).map((item, index) => (
-		    		<div key={index} id='activeItem' style={{width:350}} className='bw2 shadow-5'>
-		    			<h3> {destinations[index].name} </h3>
-		            	<img className='pointer' alt='dest' id={index} src={destinations[index].imageLink} style={{width:300, height:300}}
-		            		onClick={this.changeBack}/>
+		    		<div key={index} id={index} className='bw2 shadow-5 pointer' style={{marginLeft:'auto'}} onClick={this.changeBack}>
+		    			<h3 style={{color:'white',marginTop:'25px'}}> {destinations[index].name} </h3>
+		            	<img className='pointer' alt='dest' id={index} src={destinations[index].imageLink}/>
 		          	</div>  
 			    ))}
 		      </Carousel>

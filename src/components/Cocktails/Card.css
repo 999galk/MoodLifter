@@ -26,3 +26,41 @@
 .unhide{
 	display:block;
 }
+
+.carousel.carousel-slider{
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 25%
+}
+
+
+@media screen and (min-width: 200px) {
+  .carousel.carousel-slider{
+		max-width:100%;
+	}
+	ul{
+		padding-inline-start: 0px;
+	}
+	#chosen{
+		max-width: 90%;
+	}
+}
+@media screen and (min-width: 400px) {
+  .carousel.carousel-slider{
+		max-width:100%;
+	}
+	ul{
+		padding-inline-start: 0px;
+	}
+	#chosen{
+		max-width: 90%;
+	}
+}
+@media screen and (min-width: 600px) {
+  .carousel.carousel-slider{
+		max-width:25%;
+	}
+	#chosen{
+		max-width: 70%;
+	}
+}

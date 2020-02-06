@@ -1,5 +1,6 @@
 import React from 'react';
-import Carousel from 'react-simply-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 import './Card.css';
 
 
@@ -79,11 +80,19 @@ class CocktailGenerator extends React.Component{
   			cocktailImg : cocktails[i].cocktailImg,
   			cocktailName : cocktails[i].cocktailName,
   			cocktailIngredients : cocktails[i].cocktailIngredients
-  		})
+  		}, this.handleOnClick(event))
   	}
 
   	handleOnClick = (event) => {
-		const sugDiv = document.getElementById('suggestions');
+  		let sugDiv;
+  		if(event.target.id === 'downArrow'){
+  			sugDiv = document.getElementById('suggestions');
+  			if(sugDiv.className === 'hide'){
+  				sugDiv.className = 'unhide';
+  			}
+  		} else{
+  			sugDiv = document.getElementById('chosen');
+  		}
 		sugDiv.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 	}
 
@@ -97,7 +106,7 @@ class CocktailGenerator extends React.Component{
 		const {cocktailImg, cocktailName, cocktailIngredients, cocktailSuggestions} = this.state;
 		return (
 			<div style={{display:'flex', flexDirection:'column'}}>
-			<div className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'70%'}}>
+			<div id='chosen' className='center card-bg fade-in br3 pa4 ma2 mb5 dib bw2 shadow-5'>
 				<div>
 					<h1>Your chosen drink for tonight is:</h1>
 				</div>
@@ -107,67 +116,25 @@ class CocktailGenerator extends React.Component{
 			      	</div>
 			      	<div className='mw5 mw7-ns ph5-ns'>
 				        <h2 className='pa2 mt0'>{cocktailName}</h2>
-				        <p className='w5 lh-copy measure'>{cocktailIngredients}</p>
+				        <p className='w5 lh-copy measure' style={{maxWidth:'80%', marginLeft:'auto', marginRight:'auto'}}>{cocktailIngredients}</p>
 				        <div className='mt4'>
 				        <a className='f3' href="https://www.google.co.il/maps/search/bar" target="_blank" rel="noopener noreferrer"> Go get It! </a>
 				        </div>
 				        <p className='mt5'>Not for you?</p>
-				        <img alt='downAroow' className='pointer' src='https://cdn4.iconfinder.com/data/icons/colorful-basic-arrows/515/arrow_down_circle_darkblue-512.png' width='50px' height='50px' onClick={this.handleOnClick}/>
+				        <img alt='downArrow' id='downArrow' className='pointer' src='https://cdn4.iconfinder.com/data/icons/colorful-basic-arrows/515/arrow_down_circle_darkblue-512.png' width='50px' height='50px' onClick={this.handleOnClick}/>
 			        </div> 
 		        </div>
 		    </div>
-		    <div id='suggestions'>
+		    <div id='suggestions' className='hide'>
 		    <hr/>
 		    <h2 className='mt2'> More Suggestions:</h2>
-		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'98%'}}>
+		    <div className='br3 pa3 ma2 mb5 dib bw2 shadow-5' style={{maxWidth:'70%'}}>
 		    	<Carousel
-		      	id='carousle'
-		      	containerProps={{
-		          style: {
-		            justifyContent: "space-between",
-		            marginBottom : '8px'
-		          }
-		        }}
-		        activeSlideIndex={this.state.activeSlideIndex}
-		        onRequestChange={this.setActiveSlideIndex}
-		        forwardBtnProps={{
-		          children: <img alt='rightArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-right-blue.svg"/>,
-		          style: {
-		            width: 70,
-		            height: 70,
-		            minWidth: 70,
-		            alignSelf: "center",
-		            backgroundColor: 'Transparent',
-				    backgroundRepeat :'no-repeat',
-				    border : 'none',
-				    cursor : 'pointer',
-				    overflow : 'hidden',
-				    outline: 'none'
-		          }
-		        }}
-		        backwardBtnProps={{
-		          children: <img alt='leftArrow' className='grow' src="http://www.2do.rs/wp-content/uploads/2017/09/arrow-left-blue.svg"/>,
-		          style: {
-		            width: 70,
-		            height: 70,
-		            minWidth: 70,
-		            alignSelf: "center",
-		            backgroundColor: 'Transparent',
-				    backgroundRepeat :'no-repeat',
-				    border : 'none',
-				    cursor : 'pointer',
-				    overflow : 'hidden',
-				    outline: 'none'
-		          }
-		        }}
-		        itemsToShow={3}
-		        speed={400}
-		      >
+		    	>
 			    {Array.from(cocktailSuggestions).map((item, index) => (
-		    		<div key={index} id='activeItem' style={{width:'350px'}} className='bw2 shadow-5'>
-		    			<h3>{cocktailSuggestions[index].cocktailName}</h3>
-		            	<img alt='cocktail' className='pointer' id={index} src={cocktailSuggestions[index].cocktailImg} style={{width:300, height:300}}
-		            		onClick={this.changeBack}/>
+		    		<div key={index} id={index} className='bw2 shadow-5 pointer' style={{marginLeft:'auto'}} onClick={this.changeBack}>
+		    			<h3 style={{color:'white',marginTop:'25px'}}>{cocktailSuggestions[index].cocktailName}</h3>
+		            	<img alt='cocktail' id={index} src={cocktailSuggestions[index].cocktailImg}/>
 		          	</div>  
 			    ))}
 		      </Carousel>
