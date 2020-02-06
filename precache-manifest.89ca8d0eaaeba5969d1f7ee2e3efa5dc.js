@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6d370d499123dbe897b809eb3e263d66",
+    "revision": "632760e112034ed6cd632802ff2be9ce",
     "url": "/MoodLifterApp/index.html"
   },
   {
-    "revision": "72774e69bb9109b5c3f2",
-    "url": "/MoodLifterApp/static/css/2.70550239.chunk.css"
+    "revision": "093f246a1a5a87109946",
+    "url": "/MoodLifterApp/static/css/2.b63c5b9a.chunk.css"
   },
   {
-    "revision": "3a5e312abd8893377d99",
-    "url": "/MoodLifterApp/static/css/main.418fc266.chunk.css"
+    "revision": "cb1bd48a2dc9ed510ef0",
+    "url": "/MoodLifterApp/static/css/main.f8316e6e.chunk.css"
   },
   {
-    "revision": "72774e69bb9109b5c3f2",
-    "url": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js"
+    "revision": "093f246a1a5a87109946",
+    "url": "/MoodLifterApp/static/js/2.01700ac9.chunk.js"
   },
   {
-    "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js.LICENSE"
+    "revision": "4cd46fb3e8a2aa865b2d1d607cd463b8",
+    "url": "/MoodLifterApp/static/js/2.01700ac9.chunk.js.LICENSE"
   },
   {
-    "revision": "3a5e312abd8893377d99",
-    "url": "/MoodLifterApp/static/js/main.1d0f90b6.chunk.js"
+    "revision": "cb1bd48a2dc9ed510ef0",
+    "url": "/MoodLifterApp/static/js/main.9e22b16b.chunk.js"
   },
   {
     "revision": "aefb5faf17129e6fcd51",

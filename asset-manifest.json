@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/MoodLifterApp/static/css/main.418fc266.chunk.css",
-    "main.js": "/MoodLifterApp/static/js/main.1d0f90b6.chunk.js",
-    "main.js.map": "/MoodLifterApp/static/js/main.1d0f90b6.chunk.js.map",
+    "main.css": "/MoodLifterApp/static/css/main.f8316e6e.chunk.css",
+    "main.js": "/MoodLifterApp/static/js/main.9e22b16b.chunk.js",
+    "main.js.map": "/MoodLifterApp/static/js/main.9e22b16b.chunk.js.map",
     "runtime-main.js": "/MoodLifterApp/static/js/runtime-main.9f6a218a.js",
     "runtime-main.js.map": "/MoodLifterApp/static/js/runtime-main.9f6a218a.js.map",
-    "static/css/2.70550239.chunk.css": "/MoodLifterApp/static/css/2.70550239.chunk.css",
-    "static/js/2.8c31ceca.chunk.js": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js",
-    "static/js/2.8c31ceca.chunk.js.map": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js.map",
+    "static/css/2.b63c5b9a.chunk.css": "/MoodLifterApp/static/css/2.b63c5b9a.chunk.css",
+    "static/js/2.01700ac9.chunk.js": "/MoodLifterApp/static/js/2.01700ac9.chunk.js",
+    "static/js/2.01700ac9.chunk.js.map": "/MoodLifterApp/static/js/2.01700ac9.chunk.js.map",
     "index.html": "/MoodLifterApp/index.html",
-    "precache-manifest.4589c9c8c67143aa43a6c68c80e0938f.js": "/MoodLifterApp/precache-manifest.4589c9c8c67143aa43a6c68c80e0938f.js",
+    "precache-manifest.89ca8d0eaaeba5969d1f7ee2e3efa5dc.js": "/MoodLifterApp/precache-manifest.89ca8d0eaaeba5969d1f7ee2e3efa5dc.js",
     "service-worker.js": "/MoodLifterApp/service-worker.js",
-    "static/css/2.70550239.chunk.css.map": "/MoodLifterApp/static/css/2.70550239.chunk.css.map",
-    "static/css/main.418fc266.chunk.css.map": "/MoodLifterApp/static/css/main.418fc266.chunk.css.map",
-    "static/js/2.8c31ceca.chunk.js.LICENSE": "/MoodLifterApp/static/js/2.8c31ceca.chunk.js.LICENSE",
+    "static/css/2.b63c5b9a.chunk.css.map": "/MoodLifterApp/static/css/2.b63c5b9a.chunk.css.map",
+    "static/css/main.f8316e6e.chunk.css.map": "/MoodLifterApp/static/css/main.f8316e6e.chunk.css.map",
+    "static/js/2.01700ac9.chunk.js.LICENSE": "/MoodLifterApp/static/js/2.01700ac9.chunk.js.LICENSE",
     "static/media/App.css": "/MoodLifterApp/static/media/PoetsenOne-Regular.b7eb65a4.woff",
     "static/media/Header.css": "/MoodLifterApp/static/media/Promo-Twitter-Header.6bd6880b.jpeg",
     "static/media/logoTravel.png": "/MoodLifterApp/static/media/logoTravel.8e18f30c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9f6a218a.js",
-    "static/css/2.70550239.chunk.css",
-    "static/js/2.8c31ceca.chunk.js",
-    "static/css/main.418fc266.chunk.css",
-    "static/js/main.1d0f90b6.chunk.js"
+    "static/css/2.b63c5b9a.chunk.css",
+    "static/js/2.01700ac9.chunk.js",
+    "static/css/main.f8316e6e.chunk.css",
+    "static/js/main.9e22b16b.chunk.js"
   ]
 }
